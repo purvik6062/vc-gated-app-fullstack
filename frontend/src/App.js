@@ -26,8 +26,7 @@ function App() {
                   <a href="https://0xpolygonid.github.io/tutorials/#core-concepts-of-polygon-id-verifiable-credentials-identity-holder-issuer-and-verifier-triangle-of-trust">
                     (Verifiable Credential)
                   </a>{" "}
-                  gated dapp. Prove you were born before January 1, 2023 to use
-                  the dapp
+                  gated dapp. Prove your country.
                 </p>
 
                 <PolygonIDVerifier
@@ -37,7 +36,7 @@ function App() {
                   localServerURL={
                     process.env.REACT_APP_VERIFICATION_SERVER_LOCAL_HOST_URL
                   }
-                  credentialType={"KYCAgeCredential"}
+                  credentialType={"Country"}
                   issuerOrHowToLink={
                     "https://oceans404.notion.site/How-to-get-a-Verifiable-Credential-f3d34e7c98ec4147b6b2fae79066c4f6?pvs=4"
                   }
@@ -54,7 +53,7 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <p
+                {/* <p
                   style={{
                     position: "absolute",
                     bottom: "-15px",
@@ -63,7 +62,7 @@ function App() {
                   }}
                 >
                   Template built with 💜 by Steph
-                </p>
+                </p> */}
               </a>
             </Card>
           </Container>

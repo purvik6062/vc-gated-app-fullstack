@@ -142,3 +142,7 @@ Here's the corresponding Iden3 circuit code
 - [authV2.circom](https://github.com/iden3/circuits/blob/master/circuits/auth/authV2.circom)
 - [credentialAtomicQueryMTPOffChain.circom](https://github.com/iden3/circuits/blob/master/circuits/offchain/credentialAtomicQueryMTPOffChain.circom)
 - [credentialAtomicQuerySigOffChain.circom](https://github.com/iden3/circuits/blob/master/circuits/offchain/credentialAtomicQuerySigOffChain.circom)
+
+
+
+"@iden3/js-iden3-auth": "^1.0.0-beta.7",
