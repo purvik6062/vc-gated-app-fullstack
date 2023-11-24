@@ -137,8 +137,7 @@ async function handleVerification(req, res) {
   const verifier = await auth.Verifier.newVerifier(
     {
       stateResolver: resolvers,
-      circuitsDir: keyDIR,
-      // circuitsDir: path.join(__dirname, keyDIR),
+      circuitsDir: path.join(__dirname, keyDIR),
       ipfsGatewayURL: "https://ipfs.io"
     }
   );
