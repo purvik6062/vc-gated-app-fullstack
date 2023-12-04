@@ -1,17 +1,56 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PolygonIDVerifier from "./PolygonIDVerifier";
 import VcGatedDapp from "./VcGatedDapp";
+import axios from "axios"
 import { Center, Card, Image, CardBody, Container } from "@chakra-ui/react";
+import UserDashboard from "./UserDashboard"
 
 function App() {
   // if you're developing and just want to see the dapp without going through the Polygon ID flow,
   // temporarily set this to "true" to ignore the Polygon ID check and go straight to the dapp page
   const [provedAccessBirthday, setProvedAccessBirthday] = useState(false);
+
+
+  // useEffect(() => {
+  //   if (provedAccessBirthday) {
+  //     // Use window.history.pushState to change the URL without triggering a page reload
+
+  //     // Redirect the user to the desired URL
+  //     window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1178556490999664681&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8008%2Fauth%2Fdiscord%2Fcallback&scope=identify+guilds";
+  //     // window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1178556490999664681&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A4000%2Fauth%2Fdiscord%2Fcallback&scope=identify+guilds";
+  //   }
+  // }, [provedAccessBirthday]);
+
+  useEffect(() => {
+    if (provedAccessBirthday) {
+      // Make a request to your server-side endpoint for redirection
+      fetch("http://localhost:8008/redirect")
+        .then((response) => {
+          if (response.ok) {
+            console.log("Redirecting...");
+          } else {
+            console.error("Failed to redirect");
+          }
+        })
+        .catch((error) => console.error("Error:", error));
+    }
+  }, [provedAccessBirthday]);
+
+
   return (
     <>
       {provedAccessBirthday ? (
-        <VcGatedDapp />
+        // <VcGatedDapp />
+        // <UserDashboard />
+        window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1178556490999664681&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8008%2Fauth%2Fdiscord%2Fcallback&scope=identify+guilds"
+        // window.location.href = "https://discord.com/channels/1176838615268069398/1176838779210829834"
+        //https://discord.com/channels/1176838615268069398/1176839418401787944 - get-a-role channel
+        //https://discord.com/channels/1176838615268069398/1176838779210829834 - vc-holder channel
+
+        // <h1>Eheee Ho gayaaa</h1> // Move the API call to useEffect to ensure it's called when the component mounts
+
+
       ) : (
         <Center className="vc-check-page">
           <Container>
@@ -22,13 +61,8 @@ function App() {
             >
               <CardBody style={{ paddingBottom: 0 }}>
                 <p>
-                  This is a fullstack template for creating a Polygon ID VC{" "}
-                  <a href="https://0xpolygonid.github.io/tutorials/#core-concepts-of-polygon-id-verifiable-credentials-identity-holder-issuer-and-verifier-triangle-of-trust">
-                    (Verifiable Credential)
-                  </a>{" "}
-                  gated dapp. Prove your country.
+                  Prove your Identity.
                 </p>
-
                 <PolygonIDVerifier
                   publicServerURL={
                     process.env.REACT_APP_VERIFICATION_SERVER_PUBLIC_URL
@@ -64,10 +98,11 @@ function App() {
                   Template built with 💜 by Steph
                 </p> */}
               </a>
-            </Card>
-          </Container>
-        </Center>
-      )}
+            </Card >
+          </Container >
+        </Center >
+      )
+      }
     </>
   );
 }

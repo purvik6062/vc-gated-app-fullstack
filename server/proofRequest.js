@@ -1,9 +1,31 @@
+// const { ageCheck } = require("./vcHelpers/ageCheck");
+
+// // design your own customised authentication requirement here using Query Language
+// // https://0xpolygonid.github.io/tutorials/verifier/verification-library/zk-query-language/
+
+// const humanReadableAuthReason = "Must be born before this year";
+
+// const credentialSubject = {
+//   birthdate: {
+//     $eq: 20020106,
+//   },
+// };
+
+// const proofRequest = ageCheck(credentialSubject);
+
+// module.exports = {
+//   humanReadableAuthReason,
+//   proofRequest,
+// };
+
+
+
 const { kycCredentials } = require("./vcHelpers/ZKKYC");
 
 // design your own customised authentication requirement here using Query Language
 // https://0xpolygonid.github.io/tutorials/verifier/verification-library/zk-query-language/
 
-const humanReadableAuthReason = "Must be born before this year";
+const humanReadableAuthReason = "Must be an Indian";
 
 const credentialSubject = {
   Nationality: {

@@ -47,6 +47,8 @@ function PolygonIDVerifier({
 
   const socket = io(serverUrl);
 
+  console.log("socket", socket);
+
   useEffect(() => {
     socket.on("connect", () => {
       setSessionId(socket.id);
